@@ -1,31 +1,18 @@
+%% 2018-01-11
+%% fixed package version, to process tabu doc
 %%
-%% This is file `enumitem-zref.sty',
-%% generated with the docstrip utility.
-%%
-%% The original source files were:
-%%
-%% enumitem-zref.dtx  (with options: `package')
-%% 
-%% This is a generated file.
-%% 
-%% enumitem-zref : 2011/02/18 v1.8 - Extended references to items for enumitem package and hyperref
-%% 
 %% This work may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either
 %% version 1.3 of this license or (at your option) any later
 %% version. The latest version of this license is in
 %%    http://www.latex-project.org/lppl.txt
 %% 
-%% This work consists of the main source file enumitem-zref.dtx
-%% and the derived files
-%%    enumitem-zref.sty, enumitem-zref.pdf, enumitem-zref.ins,
-%%    enumitem-zexample.tex
 %% 
 %% enumitem-zref : Extended references to items for enumitem package and hyperref
 %% Copyright (C) 2010 by Florent Chervet <florent.chervet@free.fr>
 %% 
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
-\ProvidesPackage{enumitem-zref}[2011/02/18 v1.8 - Extended references for enumitem pkg]
+\ProvidesPackage{enumitem-zref}[2011/02/18 v1.8 - Extended references for enumitem pkg + 2018-01-11 \zref@addprops fix for 2010 zref update]
 \RequirePackage{ltxcmds,etoolbox,kvoptions,gettitlestring,enumitem}
 \RequirePackage{zref}[2010/05/01]
 \RequirePackage{zref-user,zref-counter}
@@ -133,14 +120,14 @@
 \zen@temp D{refitem}\zen@@refitem
 \zen@temp D{commaref}\zen@@commaref
 \zen@temp U{counter}{\zref@getcurrent{counter}}
-\zref@addprop{zen@list}{%
+\zref@addprops{zen@list}{%
    zen@default,zen@page,zen@type,zen@depth,zen@listctr,%
    zen@listname,zen@index,zen@label,zen@ref,zen@starlabel,%
    zen@parents,zen@refitem,zen@commaref,zen@item,zen@currentlabel,zen@counter}
 \newif\ifzen@Hy
 \AtBeginDocument{%
    \ifdefined\hyper@anchor \zen@Hytrue
-      \zref@addprop{zen@list}{zen@anchor,zen@currentlabelname}%
+      \zref@addprops{zen@list}{zen@anchor,zen@currentlabelname}%
    \else \zen@Hyfalse   \let\zen@refHy \zen@refText
    \fi
 }
