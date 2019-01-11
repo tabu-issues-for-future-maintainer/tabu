@@ -1,0 +1,168 @@
+%%
+%% This is file `tabu.ins',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% tabu.dtx  (with options: `install')
+%% 
+%% This is a generated file.
+%% Copyright (FC) 2010-2011 - lppl
+%% 
+%% tabu : 2011/02/26 v2.8 - tabu : Flexible LaTeX tabulars
+%% 
+%% **********************************************************************************************
+%% \begin{tabu}               { preamble } => default target: \linewidth or \linegoal
+%% \begin{tabu} to     <dimen>{ preamble } => target specified
+%% \begin{tabu} spread <dimen>{ preamble } => target relative to the ``natural width''
+%% 
+%%  tabu works in text and in math modes.
+%% 
+%%  X columns: automatic width ajustment + horizontal and vertical alignment
+%%  \begin{tabu}   { X[4c] X[1c] X[-2ml]  }
+%% 
+%%  Horizontal lines and / or leaders:
+%%         \hline\hline                          => double horizontal line
+%%         \firsthline\hline                     => for nested tabulars
+%%         \lasthline\hline                      => for nested tabulars
+%%         \tabucline[line spec]{column-column}  => ``funny'' lines (dash/leader)
+%%  Automatic lines / leaders :
+%%         \everyrow{\hline\hline}
+%% 
+%%  Vertical lines and / or leaders:
+%%  \begin{tabu}   { |[3pt red] X[4c] X[1c] X[-2ml] |[3pt blue] }
+%%  \begin{tabu}   { |[3pt red] X[4c] X[1c] X[-2ml] |[3pt on 2pt off 4pt blue] }
+%% 
+%%  Fixed vertical spacing adjustment:
+%%         \extrarowheight=<dimen>     \extrarowdepth=<dimen>
+%%    or:     \extrarowsep=<dimen>               => may be prefixed by \global
+%% 
+%%  Dynamic vertical spacing adjustment:
+%%       \abovetabulinesep=<dimen>  \belowtabulinesep=<dimen>
+%%   or:      \tabulinesep=<dimen>               => may be prefixed by \global
+%% 
+%%  delarray.sty shortcuts: in math and text modes
+%%  \begin{tabu} ....        \({ preamble }\)
+%% 
+%%  Algorithms reports:
+%%            \tracingtabu=1             \tracingtabu=2
+%% 
+%% **********************************************************************************************
+%% 
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 1.3 of this license or (at your option) any later
+%% version. The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% This work consists of the main source file tabu.dtx
+%% and the derived files
+%%    tabu.sty, tabu.pdf, tabu.ins
+%% 
+%% tabu : Flexible LaTeX tabulars
+%% lppl copyright 2010-2011 by FC <florent.chervet@free.fr>
+%% 
+\input docstrip.tex
+\Msg{************************************************************************}
+\Msg{* Installation}
+\Msg{* Package: 2011/02/26 v2.8 - tabu: Flexible LaTeX tabulars}
+\Msg{************************************************************************}
+
+\keepsilent
+\askforoverwritefalse
+
+\let\MetaPrefix \relax
+\preamble
+
+This is a generated file.
+Copyright (FC) 2010-2011 - lppl
+
+tabu : 2011/02/26 v2.8 - tabu : Flexible LaTeX tabulars
+
+**********************************************************************************************
+\string\begin{tabu}               { preamble } => default target: \string\linewidth or \string\linegoal
+\string\begin{tabu} to     <dimen>{ preamble } => target specified
+\string\begin{tabu} spread <dimen>{ preamble } => target relative to the ``natural width''
+
+ tabu works in text and in math modes.
+
+ X columns: automatic width ajustment + horizontal and vertical alignment
+ \string\begin{tabu}   { X[4c] X[1c] X[-2ml]  }
+
+ Horizontal lines and / or leaders:
+        \string\hline\string\hline                          => double horizontal line
+        \string\firsthline\string\hline                     => for nested tabulars
+        \string\lasthline\string\hline                      => for nested tabulars
+        \string\tabucline[line spec]{column-column}  => ``funny'' lines (dash/leader)
+ Automatic lines / leaders :
+        \string\everyrow{\string\hline\string\hline}
+
+ Vertical lines and / or leaders:
+ \string\begin{tabu}   { |[3pt red] X[4c] X[1c] X[-2ml] |[3pt blue] }
+ \string\begin{tabu}   { |[3pt red] X[4c] X[1c] X[-2ml] |[3pt on 2pt off 4pt blue] }
+
+ Fixed vertical spacing adjustment:
+        \string\extrarowheight=<dimen>     \string\extrarowdepth=<dimen>
+   or:     \string\extrarowsep=<dimen>               => may be prefixed by \string\global
+
+ Dynamic vertical spacing adjustment:
+      \string\abovetabulinesep=<dimen>  \string\belowtabulinesep=<dimen>
+  or:      \string\tabulinesep=<dimen>               => may be prefixed by \string\global
+
+ delarray.sty shortcuts: in math and text modes
+ \string\begin{tabu} ....        \string\({ preamble }\string\)
+
+ Algorithms reports:
+           \string\tracingtabu=1             \string\tracingtabu=2
+
+**********************************************************************************************
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either
+version 1.3 of this license or (at your option) any later
+version. The latest version of this license is in
+   http://www.latex-project.org/lppl.txt
+
+This work consists of the main source file tabu.dtx
+and the derived files
+   tabu.sty, tabu.pdf, tabu.ins
+
+tabu : Flexible LaTeX tabulars
+lppl copyright 2010-2011 by FC <florent.chervet@free.fr>
+
+\endpreamble
+\let\MetaPrefix \DoubleperCent
+
+{
+\catcode164=9
+\generate{%
+   \file{tabu.ins}{\from{tabu.dtx}{install}}%
+   \file{tabu.sty}{\from{tabu.dtx}{package}}%
+}
+}
+
+\askforoverwritefalse
+\generate{%
+   \file{tabu.drv}{\from{tabu.dtx}{driver}}%
+}
+
+\obeyspaces
+\Msg{************************************************************************}
+\Msg{*}
+\Msg{* To finish the installation you have to move the following}
+\Msg{* file into a directory searched by TeX:}
+\Msg{*}
+\Msg{*     tabu.sty}
+\Msg{*}
+\Msg{* To produce the documentation run the file `tabu.dtx'}
+\Msg{* through LaTeX.}
+\Msg{*}
+\Msg{* Happy TeXing!}
+\Msg{*}
+\Msg{************************************************************************}
+
+\endbatchfile
+
+\endinput
+%%
+%% End of file `tabu.ins'.
