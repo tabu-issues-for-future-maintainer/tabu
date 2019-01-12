@@ -14,7 +14,7 @@ a $x$
 Result using tabu:
 
 % T1 and T2 should not be equal
-
+\makeatletter
 \noindent\begin{tabu} to \linewidth {|X[p]| X[m]| X[b]|}
     \hline
     \centering header p &

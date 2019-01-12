@@ -717,6 +717,8 @@
     \let\tabu@tabarray  \@tabarray       % idem  "    "    "    "    "    "    "
     \tabu@adl@fix      \let\endarray      \tabu@endarray % <fix> colortbl & arydshln (delarray)
     \iftabu@colortbl\CT@everycr\expandafter{\expandafter\iftabu@everyrow \the\CT@everycr \fi}\fi
+%%TABU-FIXED  set up old version of array package \@classz to avoid recoding m (and X) here.
+    \let\tabu@classzORI\@classz \let\@classz \tabu@classz
 %%TABU-FIXED set up \tabu@currentgrouptype
 \def\tabu@currentgrouptype{\currentgrouptype}%
 \ifx\color@begingroup\begingroup
@@ -848,6 +850,30 @@
 }% \tabu@reset
 \def\tabu@setsave #1{\expandafter\tabu@sets@ve #1\@nil{#1}}
 \long\def\tabu@sets@ve #1\@nil #2{\@temptokena\expandafter{\the\@temptokena \def#2{#1}}}
+%%TABU-FIXED define classz to use vcenter, reverting a change in array package
+\let\tabu@classzORI\@classz
+\def\tabu@classz{%
+\ifx\tabu@prepnext@tok\prepnext@tok% in tabu
+\expandafter\tabu@classz@oldarray
+\else
+\tabu@classzORI
+\fi}%
+\def\tabu@classz@oldarray{%
+     \@classx
+     \@tempcnta \count@
+   \prepnext@tok
+   \@addtopreamble{\ifcase \@chnum
+      \hfil
+      \d@llarbegin
+      \insert@column
+      \d@llarend \hfil \or
+      \hskip1sp\d@llarbegin \insert@column \d@llarend \hfil \or
+      \hfil\hskip1sp\d@llarbegin \insert@column \d@llarend \or
+   $\vcenter
+   \@startpbox{\@nextchar}\insert@column \@endpbox $\or
+   \vtop \@startpbox{\@nextchar}\insert@column \@endpbox \or
+   \vbox \@startpbox{\@nextchar}\insert@column \@endpbox
+  \fi}\prepnext@tok}%
 %% The Rewritting Process -------------------------------------------
 \def\tabu@newcolumntype #1{%
     \expandafter\tabu@new@columntype
