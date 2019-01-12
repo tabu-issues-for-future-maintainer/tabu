@@ -1,0 +1,14 @@
+\documentclass{article}
+\input{regression-test}
+\usepackage{fancyvrb}
+\usepackage{tabu}
+\begin{document}
+a $x$
+
+\START
+\begin{tabu}spread 0pt {XX}
+A
+&
+B
+\end{tabu}
+\end{document}

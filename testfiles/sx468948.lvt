@@ -1,0 +1,15 @@
+\documentclass{article}
+\input{regression-test}
+\usepackage{longtable,tabu}
+\usepackage{color}
+
+\begin{document}
+
+a $x$
+
+\START
+\begin{longtabu} to \linewidth {llX}
+    a & b & c\\
+\end{longtabu}
+
+\end{document}
