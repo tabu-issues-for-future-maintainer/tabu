@@ -1,21 +1,8 @@
 # tabu
 
-## Emergency updates to the LaTeX tabu package
-
-## Issues from Stackexchange
-
-https://tex.stackexchange.com/questions/469282/xcolor-breaking-and-align-environments-inside-tabu
-
-https://tex.stackexchange.com/questions/468948/longtabu-and-color-compatibility
-
-https://tex.stackexchange.com/questions/466147/tabu-very-recently-stopped-working-with-color-xcolor-or-with-fancyvrb/466261
-
-https://tex.stackexchange.com/questions/87144/incompatibility-between-verbatim-and-tabu-danger-of-using-scantokens-in-a-pac
-
 
 ## Original Tabu README
 
-- - - -
 
 ##            tabu - Flexible LaTeX tabulars
 
@@ -57,4 +44,33 @@ preamble does not contain "too special tokens".
 
 tabu has been tested successfully with many packages related
 to tabulars, cells, alignment...
+
+- - - -
+
+## Emergency updates to the LaTeX tabu package
+
+The original author of tabu appears out of contact, and tabu had not
+been updated for several years, finally becoming unusable in 2019 as
+updates to other packages mean some of its patched code did not work
+as intended.
+
+The package is not being actively maintained however any major required
+fixes may be reported to the https://github.com/tabu-fixed/tabu repository
+and volunteers there (currently members of the LaTex3 Team) will attempt
+to update the package with any fixes required.
+
+
+
+
+## Issues from Stackexchange
+
+https://tex.stackexchange.com/questions/469282/xcolor-breaking-and-align-environments-inside-tabu
+
+https://tex.stackexchange.com/questions/468948/longtabu-and-color-compatibility
+
+https://tex.stackexchange.com/questions/466147/tabu-very-recently-stopped-working-with-color-xcolor-or-with-fancyvrb/466261
+
+https://tex.stackexchange.com/questions/87144/incompatibility-between-verbatim-and-tabu-danger-of-using-scantokens-in-a-pac
+
+
 
