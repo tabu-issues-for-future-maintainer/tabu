@@ -152,8 +152,18 @@
     \edef#2{#1}\tabu@strtrim#2\@onelevel@sanitize#2%
     \expandafter}\expandafter\def\expandafter#2\expandafter{#2}%
 }% \tabu@sanitizearg
-\def\tabu@textbar #1{\begingroup \endlinechar\m@ne \scantokens{\def\:{|}}%
-    \expandafter\endgroup \expandafter#1\:% !!! semi simple group !!!
+
+%%TABU-FIXED
+\def\tabu@textbar#1{%
+    \begingroup
+      \newlinechar \m@ne%
+      \endlinechar \m@ne
+      \everyeof{\noexpand}%
+      \edef\:{\expandafter\noexpand\scantokens{|}}%
+      \expandafter
+    \endgroup
+    \expandafter #1%
+    \:%
 }% \tabu@textbar
 \def\tabu@everyrow@bgroup{\iftabu@everyrow \begingroup \else \noalign{\ifnum0=`}\fi \fi}
 \def\tabu@everyrow@egroup{%

@@ -1,0 +1,25 @@
+
+\documentclass{article}
+\input{regression-test}
+
+\usepackage{verbatim}
+\usepackage{tabu}
+
+\makeatletter
+\renewcommand\verbatim@processline
+{%
+  \begin{tabu}to\textwidth{|l|X[-1,l]|}
+    foo&\the\verbatim@line
+  \end{tabu}\par
+}
+
+\makeatother
+
+\begin{document}
+
+a $x$
+
+\START
+\verbatiminput{\jobname.lvt}%
+
+\end{document}
