@@ -1,4 +1,4 @@
-%%TABU-fixed
+%%TABU-FIXED
 %%
 %% tabu : 2019-01-11 - tabu : Flexible LaTeX tabulars
 %% 
@@ -704,7 +704,8 @@
     \let\tabu@tabarray  \@tabarray       % idem  "    "    "    "    "    "    "
     \tabu@adl@fix      \let\endarray      \tabu@endarray % <fix> colortbl & arydshln (delarray)
     \iftabu@colortbl\CT@everycr\expandafter{\expandafter\iftabu@everyrow \the\CT@everycr \fi}\fi
-%%TABU-FIXED
+%%TABU-FIXED set up \tabu@currentgrouptype
+\def\tabu@currentgrouptype{\currentgrouptype}%
 \ifx\color@begingroup\begingroup
 \def\color@begingroup{\expandafter\begingroup\expandafter\def\expandafter
                       \tabu@currentgrouptype\expandafter{\the\currentgrouptype}}%
@@ -1626,7 +1627,10 @@
                 \let\FV@ListProcessLine \tabu@FV@ListProcessLine  % \hbox to natural width...
                 \narrowragged \arraybackslash \parfillskip \@flushglue
                 \ifdefined\pdfadjustspacing \pdfadjustspacing\z@ \fi
-                \bgroup \aftergroup\tabu@endpboxmeasure
+                \bgroup
+ \aftergroup\tabu@endpboxmeasure
+%%TABU-FIXED add \color@begingroup
+    \color@begingroup
                 \ifdefined \cellspacetoplimit \tabu@cellspacepatch \fi
     \else \expandafter\@gobble
                             \tabu@startpboxquick{#1}% \@gobble \bgroup
@@ -1636,7 +1640,10 @@
                                           \bgroup\color@begingroup}
 \def\tabu@endpboxmeasure {%
     \@finalstrut \@arstrutbox
-                    \end{varwidth}\egroup    % <got my \tabu@box>
+                    \end{varwidth}%
+%TABU-FIXED add \color@begingroup
+\color@endgroup
+\egroup    % <got my \tabu@box>
     \ifdim \tabu@temp\p@ <\z@   % neg coef
         \ifdim \tabu@wd\tabu@Xcol <\wd\tabu@box
             \tabu@wddef\tabu@Xcol {\the\wd\tabu@box}%
@@ -2404,7 +2411,9 @@
 }% \tabu@adl@xarraydashrule
 \def\tabu@adl@act@endpbox {%
     \unskip \ifhmode \nobreak \fi    \@finalstrut \@arstrutbox
-    \egroup \egroup
+%%TABU-FIXED
+\color@endgroup
+   \egroup \egroup
     \adl@colhtdp \box\adl@box \hfil
 }% \tabu@adl@act@endpbox
 \def\tabu@adl@fix {%
@@ -2416,7 +2425,8 @@
 %% Correction for longtable' \@startbox definition ------------------
 %%    => \everypar is ``missing'' : TeX should be in vertical mode
 \def\tabu@LT@startpbox #1{%
-    \bgroup
+%%TABU-FIXED add \color@begingroup
+    \bgroup\color@begingroup
         \let\@footnotetext\LT@p@ftntext
         \setlength\hsize{#1}%
         \@arrayparboxrestore
