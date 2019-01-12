@@ -1,0 +1,49 @@
+\documentclass{article}
+\input{regression-test}
+\usepackage{tabu}
+\begin{document}
+a $x$
+
+\START
+\hfuzz10pt
+\hbadness10000
+
+\tabulinesep=3pt
+
+
+Result using tabu:
+
+% T1 and T2 should not be equal
+
+\noindent\begin{tabu} to \linewidth {|X[p]| X[m]| X[b]|}
+    \hline
+    \centering header p &
+    \centering header m &   
+    \centering header b \tabularnewline
+    \hline
+    text which is considerably longer than the width of the column  & 
+    text which is considerably longer than the width of the column\pdfsavepos\write20{T1: \the\pdflastypos}  & 
+    text which is considerably longer than the width of the column\pdfsavepos\write20{T2: \the\pdflastypos} 
+    \tabularnewline
+    \hline
+\end{tabu}
+
+\vspace*{1cm}
+
+Result using tabular:
+
+\noindent\begin{tabular}{|p{0.3\linewidth}|m{0.3\linewidth}|b{0.3\linewidth}|}
+    \hline
+    \centering header p &
+    \centering header m &   
+    \centering header b \tabularnewline
+    \hline
+    text which is considerably longer than the width of the column  & 
+    text which is considerably longer than the width of the column\pdfsavepos\write20{T3: \the\pdflastypos}  & 
+    text which is considerably longer than the width of the column\pdfsavepos\write20{T4: \the\pdflastypos} 
+    \tabularnewline
+    \hline
+\end{tabular}
+
+
+\end{document}
