@@ -1,0 +1,14 @@
+\documentclass[a4paper,12pt]{article}
+\input{regression-test}
+\usepackage{xcolor}
+\usepackage{tabu}
+
+\begin{document}
+
+x $x$
+
+\START
+  \begin{tabu}{ X } 
+    \[ b \]
+  \end{tabu}
+\END

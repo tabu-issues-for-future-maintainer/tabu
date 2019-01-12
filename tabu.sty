@@ -1,15 +1,6 @@
+%%TABU-fixed
 %%
-%% This is file `tabu.sty',
-%% generated with the docstrip utility.
-%%
-%% The original source files were:
-%%
-%% tabu.dtx  (with options: `package')
-%% 
-%% This is a generated file.
-%% Copyright (FC) 2010-2011 - lppl
-%% 
-%% tabu : 2011/02/26 v2.8 - tabu : Flexible LaTeX tabulars
+%% tabu : 2019-01-11 - tabu : Flexible LaTeX tabulars
 %% 
 %% **********************************************************************************************
 %% \begin{tabu}               { preamble } => default target: \linewidth or \linegoal
@@ -55,16 +46,14 @@
 %% version. The latest version of this license is in
 %%    http://www.latex-project.org/lppl.txt
 %% 
-%% This work consists of the main source file tabu.dtx
-%% and the derived files
-%%    tabu.sty, tabu.pdf, tabu.ins
-%% 
+
 %% tabu : Flexible LaTeX tabulars
 %% lppl copyright 2010-2011 by FC <florent.chervet@free.fr>
+%% Updated 2019-01-11 Copyright tabu-fixed github group
 %% 
 
-\NeedsTeXFormat{LaTeX2e}[2005/12/01]
-\ProvidesPackage{tabu}[2011/02/26 v2.8 - flexible LaTeX tabulars (FC)]
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tabu}[2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)]
 \RequirePackage{array}[2008/09/09]
 \RequirePackage{varwidth}[2009/03/30]
 \AtEndOfPackage{\tabu@AtEnd \let\tabu@AtEnd \@undefined}
@@ -715,6 +704,11 @@
     \let\tabu@tabarray  \@tabarray       % idem  "    "    "    "    "    "    "
     \tabu@adl@fix      \let\endarray      \tabu@endarray % <fix> colortbl & arydshln (delarray)
     \iftabu@colortbl\CT@everycr\expandafter{\expandafter\iftabu@everyrow \the\CT@everycr \fi}\fi
+%%TABU-FIXED
+\ifx\color@begingroup\begingroup
+\def\color@begingroup{\expandafter\begingroup\expandafter\def\expandafter
+                      \tabu@currentgrouptype\expandafter{\the\currentgrouptype}}%
+\fi
 }% \tabu@init
 \def\tabu@indent{% correction for indentation
     \ifdim \parindent>\z@\ifx \linewidth\tabudefaulttarget
@@ -1686,14 +1680,15 @@
 \def\tabu@endtabu   {\end{tabu}}
 \def\tabu@endtabus  {\end{tabu*}}
 %% Measuring the heights and depths - store the results -------------
+%%TABU-FIXED use \tabu@currentgrouptype
 \def\tabu@verticalmeasure{\everypar{}%
-    \ifnum \currentgrouptype>12         % 14=semi-simple, 15=math shift group
+    \ifnum \tabu@currentgrouptype>12         % 14=semi-simple, 15=math shift group
         \setbox\tabu@box =\hbox\bgroup
             \let\tabu@verticalspacing \tabu@verticalsp@lcr
             \d@llarbegin                % after \hbox ...
     \else
-        \edef\tabu@temp{\ifnum\currentgrouptype=5\vtop
-                        \else\ifnum\currentgrouptype=12\vcenter
+        \edef\tabu@temp{\ifnum\tabu@currentgrouptype=5\vtop
+                        \else\ifnum\tabu@currentgrouptype=12\vcenter
                         \else\vbox\fi\fi}%
         \setbox\tabu@box \hbox\bgroup$\tabu@temp \bgroup
             \let\tabu@verticalspacing \tabu@verticalsp@pmb
