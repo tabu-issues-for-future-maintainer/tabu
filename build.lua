@@ -1,6 +1,6 @@
 -- Build script for test-hyperref
 
--- Build script for tabu  (check only)
+-- Build script for tabu  (check and ctan only)
 module = "tabu"
 installfiles = {"tabu.sty"}
 unpackfiles = {}
