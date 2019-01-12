@@ -56,7 +56,7 @@ as intended.
 
 The package is not being actively maintained however any major required
 fixes may be reported to the https://github.com/tabu-fixed/tabu repository
-and volunteers there (currently members of the LaTex3 Team) will attempt
+and volunteers there (currently members of the LaTeX3 Team) will attempt
 to update the package with any fixes required.
 
 
