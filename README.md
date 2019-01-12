@@ -74,9 +74,9 @@ https://tex.stackexchange.com/questions/466147/tabu-very-recently-stopped-workin
 
 https://tex.stackexchange.com/questions/87144/incompatibility-between-verbatim-and-tabu-danger-of-using-scantokens-in-a-pac
 
+https://tex.stackexchange.com/questions/430973/tabu-m-column-vertical-alignment-not-working-after-package-updates
+
 
 ### Not yet handled
-
-https://tex.stackexchange.com/questions/430973/tabu-m-column-vertical-alignment-not-working-after-package-updates
 
 https://tex.stackexchange.com/questions/201510/what-is-the-difference-between-and-linebreak-in-cfoot
