@@ -4,12 +4,15 @@
 module = "tabu"
 installfiles = {"tabu.sty"}
 unpackfiles = {}
+docfiles = {"tabu.dtx","tabu.pdf"}
 sourcefiles = {"tabu.sty"}
 checksuppfiles = {"tabu.sty"}
+typesetfiles = {}
+packtdszip = true
 
 checkconfigs = {"build"}
 checkengines = {"pdftex"}
-checkruns = 2
+checkruns = 1
 
 
 kpse.set_program_name ("kpsewhich")
