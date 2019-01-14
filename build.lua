@@ -9,7 +9,7 @@ sourcefiles = {"tabu.sty"}
 checksuppfiles = {"tabu.sty"}
 textfiles = {"README.md"}
 typesetfiles = {}
-packtdszip = true
+packtdszip = false
 
 checkconfigs = {"build"}
 checkengines = {"pdftex"}
