@@ -7,6 +7,7 @@ unpackfiles = {}
 docfiles = {"tabu.dtx","tabu.pdf"}
 sourcefiles = {"tabu.sty"}
 checksuppfiles = {"tabu.sty"}
+textfiles = {"README.md"}
 typesetfiles = {}
 packtdszip = true
 
