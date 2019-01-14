@@ -51,7 +51,8 @@
 %% tabu : Flexible LaTeX tabulars
 %% lppl copyright 2010-2011 by FC <florent.chervet@free.fr>
 %%
-%% Updated 2019-01-11 Copyright tabu-fixed github group
+%% Updated 2019-01-11
+%% Copyright 2019 tabu-fixed github group (LaTeX3 Project members)
 %% Please report any issues at https://github.com/tabu-fixed/tabu
 %% 
 
@@ -717,7 +718,7 @@
     \let\tabu@tabarray  \@tabarray       % idem  "    "    "    "    "    "    "
     \tabu@adl@fix      \let\endarray      \tabu@endarray % <fix> colortbl & arydshln (delarray)
     \iftabu@colortbl\CT@everycr\expandafter{\expandafter\iftabu@everyrow \the\CT@everycr \fi}\fi
-%%TABU-FIXED  set up old version of array package \@classz to avoid recoding m (and X) here.
+%%TABU-FIXED  set up old version of array package \@classz to avoid recoding m (and X) here. (Partial fix only: may not cover all cases)
     \let\tabu@classzORI\@classz \let\@classz \tabu@classz
 %%TABU-FIXED set up \tabu@currentgrouptype
 \def\tabu@currentgrouptype{\currentgrouptype}%

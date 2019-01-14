@@ -75,6 +75,8 @@ https://tex.stackexchange.com/questions/466147/tabu-very-recently-stopped-workin
 https://tex.stackexchange.com/questions/87144/incompatibility-between-verbatim-and-tabu-danger-of-using-scantokens-in-a-pac
 
 https://tex.stackexchange.com/questions/430973/tabu-m-column-vertical-alignment-not-working-after-package-updates
+(Note that this is only a temporary fix reverting the change in array package m column implementation,
+A more complete fix would be to adapt tabu code to the new array)
 
 
 ### Not yet handled
