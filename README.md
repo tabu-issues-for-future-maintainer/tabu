@@ -64,6 +64,10 @@ to update the package with any fixes required.
 
 ## Issues from Stackexchange
 
+### Fixed in release 2.10
+
+https://tex.stackexchange.com/questions/471000/tabu-error-since-update
+
 ### Fixed in release 2.9
 
 https://tex.stackexchange.com/questions/469282/xcolor-breaking-and-align-environments-inside-tabu
