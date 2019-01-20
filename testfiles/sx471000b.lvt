@@ -1,0 +1,13 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{tabu}
+\usepackage{xcolor}  
+\newcolumntype{L}{>{\begin{varwidth}{0.91\linewidth}}l<{\end{varwidth}}}
+%\input{regression-test}
+
+\begin{document}
+%\START
+\begin{tabu}{Lcc}
+\begin{tabular}{l}a\end{tabular}& 2& 3\\
+\end{tabu}
+
+\end{document}
