@@ -1,0 +1,14 @@
+\documentclass{article}
+
+\usepackage{tabu}
+\usepackage{colortbl}
+\input{regression-test}
+\begin{document}
+
+\START
+\begin{tabu} {l|l}
+\rowfont[c]{\bfseries}
+1 & 2
+\end{tabu}
+
+\end{document
