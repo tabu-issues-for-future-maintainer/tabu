@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{fancyvrb}
+\usepackage{tabu}
+\newenvironment{yyyyyy}{START}{END}
+\input{regression-test}
+\begin{document}
+
+\START
+\begin{tabu*}to\linewidth{|XX|}
+% if }{ in the short verb then already not working in tabu 2.09
+A short verb: \verb|$&\~{}|&
+\begin{Verbatim}[commandchars={\\\{\}}]
+And \textit{this} is a \textbf{\textrm{complete}}
+Verbatim environment $&\~\textbraceleft\textbraceright 
+{\footnotesize this is smaller}
+\textit{spaces    are    ok    I    hope}
+\begin{yyyyyy}hello\end{yyyyyy} works
+(if on multiple lines it already
+does not work
+outside of a tabu cell, anyway)
+\normalfont\yyyyyy hello\endyyyyyy works too
+\end{Verbatim}
+\\
+\end{tabu*}
+
+\end{document}
