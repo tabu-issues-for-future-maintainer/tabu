@@ -1250,8 +1250,14 @@
     \ifnum \count@>\thr@@ \let\@halignto \@empty  \tabucolX@init
                           \def\tabu@lasttry{\m@ne\p@}\fi
     \begingroup \iffalse{\fi \ifnum0=`}\fi
-        \toks@{}\def\tabu@stack{b}\iftabuscantokens \endlinechar=10 \obeyspaces \fi %
-                                  \tabu@collectbody \tabu@strategy %
+        \toks@{}\def\tabu@stack{b}\iftabuscantokens
+                                    \endlinechar=10 \catcode`\\=12 \obeyspaces
+                                    \expandafter\@firstoftwo
+                                  \else
+                                    \expandafter\@secondoftwo
+                                  \fi %
+                                  {\tabu@collectbody@forscan\tabu@strategy{}}%
+                                  {\tabu@collectbody\tabu@strategy}%
 }% \tabu@setstrategy
 \def\tabu@savecounters{%
     \def\@elt ##1{\csname c@##1\endcsname\the\csname c@##1\endcsname}%
@@ -1278,12 +1284,7 @@
     \ifx \tabu@stack\@empty
         \toks@\expandafter{\expandafter\tabu@thebody\expandafter{\the\toks@ #2}%
                 \def\tabu@end@envir{\end{#3}}%
-                \iftabuscantokens
-                    \iftabu@long \def\tabu@endenvir {\end{#3}\tabu@gobbleX}%
-                    \else        \def\tabu@endenvir {\let\endarray \@empty
-                                                     \end{#3}\tabu@gobbleX}%
-                    \fi
-                \else           \def\tabu@endenvir  {\end{#3}}\fi}%
+                \def\tabu@endenvir {\end{#3}}}%
         \let\tabu@collectbody \tabu@endofcollect
     \else\def\tabu@temp{#3}%
         \ifx \tabu@temp\@empty \toks@\expandafter{\the\toks@ #2\end }%
@@ -1298,6 +1299,58 @@
 \def\tabu@endofcollect #1{\ifnum0=`{}\fi
                           \expandafter\endgroup \the\toks@  #1%
 }% \tabu@endofcollect
+\catcode`\| \z@
+\catcode`\\ 12
+|long|def|tabu@collectbody@forscan #1#2#3\end{%
+    |def|tabu@collectbody@forscan@next{|tabu@collectbody@forscan{#1}}%
+    |def|tabu@collectbody@forscan@partial{#2#3}%
+    |futurelet|tabu@temp@token|tabu@collectbody@forscan@a
+}%
+|def|tabu@collectbody@forscan@a{%
+    |ifcat|tabu@temp@token e%
+        |expandafter|@firstoftwo
+    |else
+        |expandafter|@secondoftwo
+    |fi
+    |tabu@collectbody@forscan@aa
+    |tabu@collectbody@forscan@b
+}%
+|def|tabu@collectbody@forscan@aa #1{%
+    |expandafter|tabu@collectbody@forscan@next|expandafter{|tabu@collectbody@forscan@partial\end#1}%
+}%
+|def|tabu@collectbody@forscan@b #1{%
+    |edef|tabu@stack{|expandafter|tabu@pushbegins@forscan
+                     |tabu@collectbody@forscan@partial\begin|relax|expandafter|@gobble|tabu@stack}%
+    |ifx |tabu@stack|@empty
+        |expandafter|@firstoftwo
+    |else
+        |expandafter|@secondoftwo
+    |fi
+    {|expandafter|tabu@collectbody@forscan@end|expandafter{|tabu@collectbody@forscan@partial}{#1}}%
+    {|expandafter|tabu@collectbody@forscan@continue|expandafter{|tabu@collectbody@forscan@partial}{#1}}%
+}%
+|def|tabu@collectbody@forscan@end #1#2{%
+    |toks@|expandafter{|expandafter|tabu@thebody|expandafter{|the|toks@ #1}%
+            |def|tabu@end@envir{|end{#2}}%
+            |iftabu@long |def|tabu@endenvir {|end{#2}|tabu@gobbleX}%
+            |else        |def|tabu@endenvir {|let|endarray |@empty
+                                             |end{#2}|tabu@gobbleX}%
+            |fi}%
+    |let|tabu@collectbody@forscan|tabu@endofcollect
+    |tabu@collectbody@forscan@next
+}%
+|def|tabu@collectbody@forscan@continue #1#2{%
+    |def|tabu@temp{#2}%
+    |ifx |tabu@temp|@empty |toks@|expandafter{|the|toks@ #1\end }%
+    |else |ifx|tabu@temp|tabu@@spxiii |toks@|expandafter{|the|toks@ #1\end#2}%
+    |else |ifx|tabu@temp|tabu@X |toks@|expandafter{|the|toks@ #1\end#2}%
+    |else |toks@|expandafter{|the|toks@ #1\end{#2}}%
+    |fi|fi|fi
+    |tabu@collectbody@forscan@next{}%
+}% \tabu@collectbody@forscan
+|long|def|tabu@pushbegins@forscan #1\begin#2{|ifx|relax#2|else b|expandafter|tabu@pushbegins@forscan|fi}%
+|catcode`|\ |z@
+\catcode`\| 12
 %% The trials: switching between strategies -------------------------
 \def\tabu@strategy {\relax  % stops \count@ assignment !
     \ifcase\count@          % case 0 = print with vertical adjustment (outer is finished)
@@ -2041,8 +2094,8 @@
 }% \tabu@printdecimal
 %% Verbatim inside X columns ----------------------------------------
 \def\tabu@verbatim{%
-    \let\verb \tabu@verb
-    \let\FV@DefineCheckEnd \tabu@FV@DefineCheckEnd
+    % \let\verb \tabu@verb
+    % \let\FV@DefineCheckEnd \tabu@FV@DefineCheckEnd
 }% \tabu@verbatim
 \let\tabu@ltx@verb \verb
 \def\tabu@verb{\@ifstar {\tabu@ltx@verb*} \tabu@ltx@verb}
