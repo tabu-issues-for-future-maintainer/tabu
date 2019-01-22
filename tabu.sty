@@ -114,7 +114,6 @@
 \def\tabu@everyrowfalse{\global\let\iftabu@everyrow \iffalse}
 \newif \iftabu@long
 \newif \iftabuscantokens
-\def\tabu@rescan {\tabu@verbatim \scantokens  }
 %% Utilities (for internal usage) -----------------------------------
 \def\tabu@gobblespace #1  {#1}
 \def\tabu@gobbletoken #1#2{#1}
@@ -959,7 +958,7 @@
     \NC@list{\NC@do \tabu@rewritemulticolumn}%
     \expandafter\@gobbletwo % gobbles \multispan{#1}
          \tabu@multicolumnORI{#1}{\tabu@rewritemulticolumn #2}%
-                {\iftabuscantokens \tabu@rescan \else \expandafter\@firstofone \fi
+                {\iftabuscantokens \scantokens \else \expandafter\@firstofone \fi
                 {#3}}%
 }% \tabu@multic@lumn
 %% The X column(s): rewriting process -----------------------------
@@ -1305,19 +1304,17 @@
     |def|tabu@collectbody@forscan@next{|tabu@collectbody@forscan{#1}}%
     |def|tabu@collectbody@forscan@partial{#2#3}%
     |futurelet|tabu@temp@token|tabu@collectbody@forscan@a
-}%
+}% \tabu@collectbody@forscan
 |def|tabu@collectbody@forscan@a{%
-    |ifcat|tabu@temp@token e%
-        |expandafter|@firstoftwo
+    |ifcat|noexpand|tabu@temp@token e%
+        |expandafter|tabu@collectbody@forscan@aa
     |else
-        |expandafter|@secondoftwo
+        |expandafter|tabu@collectbody@forscan@b
     |fi
-    |tabu@collectbody@forscan@aa
-    |tabu@collectbody@forscan@b
-}%
+}% \tabu@collectbody@forscan@a
 |def|tabu@collectbody@forscan@aa #1{%
     |expandafter|tabu@collectbody@forscan@next|expandafter{|tabu@collectbody@forscan@partial\end#1}%
-}%
+}% \tabu@collectbody@forscan@aa
 |def|tabu@collectbody@forscan@b #1{%
     |edef|tabu@stack{|expandafter|tabu@pushbegins@forscan
                      |tabu@collectbody@forscan@partial\begin|relax|expandafter|@gobble|tabu@stack}%
@@ -1328,7 +1325,7 @@
     |fi
     {|expandafter|tabu@collectbody@forscan@end|expandafter{|tabu@collectbody@forscan@partial}{#1}}%
     {|expandafter|tabu@collectbody@forscan@continue|expandafter{|tabu@collectbody@forscan@partial}{#1}}%
-}%
+}% \tabu@collectbody@forscan@b
 |def|tabu@collectbody@forscan@end #1#2{%
     |toks@|expandafter{|expandafter|tabu@thebody|expandafter{|the|toks@ #1}%
             |def|tabu@end@envir{|end{#2}}%
@@ -1338,7 +1335,7 @@
             |fi}%
     |let|tabu@collectbody@forscan|tabu@endofcollect
     |tabu@collectbody@forscan@next
-}%
+}% \tabu@collectbody@forscan@end
 |def|tabu@collectbody@forscan@continue #1#2{%
     |def|tabu@temp{#2}%
     |ifx |tabu@temp|@empty |toks@|expandafter{|the|toks@ #1\end }%
@@ -1347,7 +1344,7 @@
     |else |toks@|expandafter{|the|toks@ #1\end{#2}}%
     |fi|fi|fi
     |tabu@collectbody@forscan@next{}%
-}% \tabu@collectbody@forscan
+}% \tabu@collectbody@forscan@continue
 |long|def|tabu@pushbegins@forscan #1\begin#2{|ifx|relax#2|else b|expandafter|tabu@pushbegins@forscan|fi}%
 |catcode`|\ |z@
 \catcode`\| 12
@@ -1390,7 +1387,7 @@
 \def\tabu@shorttrial {\setbox\tabu@box \hbox\bgroup \tabu@seteverycr
     \ifx \tabu@savecounters\relax \else
                 \let\tabu@savecounters \relax \tabu@clckpt \fi
-    $\iftabuscantokens \tabu@rescan \else \expandafter\@secondoftwo \fi
+    $\iftabuscantokens \scantokens \else \expandafter\@secondoftwo \fi
        \expandafter{\expandafter \tabuthepreamble
                          \the\tabu@thebody
                          \csname tabu@adl@endtrial\endcsname
@@ -1399,7 +1396,7 @@
 \def\tabu@longtrial {\setbox\tabu@box \hbox\bgroup \tabu@seteverycr
     \ifx \tabu@savecounters\relax \else
                 \let\tabu@savecounters \relax \tabu@clckpt \fi
-    \iftabuscantokens \tabu@rescan \else \expandafter\@secondoftwo \fi
+    \iftabuscantokens \scantokens \else \expandafter\@secondoftwo \fi
        \expandafter{\expandafter \tabuthepreamble
                          \the\tabu@thebody
                          \tabuendlongtrial}\egroup      % got \tabu@box
@@ -1422,7 +1419,7 @@
     \else               \expandafter\@secondoftwo
     \fi
         {\expandafter \tabu@closetrialsgroup \expandafter
-         \tabu@rescan \expandafter{%
+         \scantokens \expandafter{%
                     \expandafter\tabuthepreamble
                         \the\expandafter\tabu@thebody
                                     \iftabu@long \else \endarray \fi}}
