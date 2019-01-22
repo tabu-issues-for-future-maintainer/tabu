@@ -2090,34 +2090,6 @@
     \fi\fi
 }% \tabu@printdecimal
 %% Verbatim inside X columns ----------------------------------------
-\def\tabu@verbatim{%
-    % \let\verb \tabu@verb
-    % \let\FV@DefineCheckEnd \tabu@FV@DefineCheckEnd
-}% \tabu@verbatim
-\let\tabu@ltx@verb \verb
-\def\tabu@verb{\@ifstar {\tabu@ltx@verb*} \tabu@ltx@verb}
-\def\tabu@fancyvrb {%
-    \def\tabu@FV@DefineCheckEnd ##1{%
-        \def\tabu@FV@DefineCheckEnd{%
-            ##1% <original definition (if fancyvrb is loaded)>
-            \let\FV@CheckEnd     \tabu@FV@CheckEnd
-            \let\FV@@CheckEnd    \tabu@FV@@CheckEnd
-            \let\FV@@@CheckEnd   \tabu@FV@@@CheckEnd
-            \edef\FV@EndScanning{%
-            \def\noexpand\next{\noexpand\end{\FV@EnvironName}}%
-                \global\let\noexpand\FV@EnvironName\relax
-                \noexpand\next}%
-            \xdef\FV@EnvironName{\detokenize\expandafter{\FV@EnvironName}}}%
-    }\expandafter\tabu@FV@DefineCheckEnd\expandafter{\FV@DefineCheckEnd}
-}% \tabu@fancyvrb
-\def\tabu@FV@CheckEnd  #1{\expandafter\FV@@CheckEnd \detokenize{#1\end{}}\@nil}
-\edef\tabu@FV@@@CheckEnd {\detokenize{\end{}}}
-\begingroup
-\catcode`\[1      \catcode`\]2
-\@makeother\{     \@makeother\}
-   \edef\x[\endgroup
-      \def\noexpand\tabu@FV@@CheckEnd ##1\detokenize[\end{]##2\detokenize[}]##3%
-   ]\x               \@nil{\def\@tempa{#2}\def\@tempb{#3}}
 \def\tabu@FV@ListProcessLine #1{%
   \hbox {%to \hsize{%
     \kern\leftmargin
@@ -2590,8 +2562,6 @@
             ifHy@hyperfootnotes\else iffalse\fi\endcsname
         \let\tabu@footnotetext \tabu@Hy@ftntext
         \let\tabu@xfootnote    \tabu@Hy@xfootnote \fi
-    \ifdefined\FV@DefineCheckEnd% <fancyvrb>
-            \tabu@fancyvrb  \fi
     \ifdefined\color            % <color / xcolor>
         \let\tabu@color \color
         \def\tabu@leavevmodecolor ##1{%
