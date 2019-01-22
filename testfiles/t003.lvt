@@ -8,17 +8,31 @@
 \START
 \begin{tabu*}to\linewidth{|XX|}
 % if }{ in the short verb then already not working in tabu 2.09
-A short verb: \verb|$&\~{}|&
+A short verb: \verb|$&\~{}|&\\
 \begin{Verbatim}[commandchars={\\\{\}}]
 And \textit{this} is a \textbf{\textrm{complete}}
-Verbatim environment $&\~\textbraceleft\textbraceright 
+Verbatim environment $&~\textbraceleft\textbraceright 
 {\footnotesize this is smaller}
 \textit{spaces    are    ok    I    hope}
-\begin{yyyyyy}hello\end{yyyyyy} works
-(if on multiple lines it already
-does not work
-outside of a tabu cell, anyway)
-\normalfont\yyyyyy hello\endyyyyyy works too
+\normalfont\yyyyyy\begin{yyyyyy}hello\end{yyyyyy}hello\endyyyyyy
+\def\foo{foo}\meaning\foo
+\meaning\foo (ok as each line is\
+scoped by fancyvrb)
+\begin{Large}AA{\footnotesize{}BB}CC\end{Large}
+\begin{Large}AA\begin{footnotesize}BB\end{footnotesize}CC\end{Large}
+\end{Verbatim}
+&
+\begin{Verbatim}
+And \textit{this} is a \textbf{\textrm{complete}}
+Verbatim environment $&~\textbraceleft\textbraceright 
+{\footnotesize this is smaller}
+\textit{spaces    are    ok    I    hope}
+\normalfont\yyyyyy\begin{yyyyyy}hello\end{yyyyyy}hello\endyyyyyy
+\def\foo{foo}\meaning\foo
+\meaning\foo (ok as each line is\
+scoped by fancyvrb)
+\begin{Large}AA{\footnotesize{}BB}CC\end{Large}
+\begin{Large}AA\begin{footnotesize}BB\end{footnotesize}CC\end{Large}
 \end{Verbatim}
 \\
 \end{tabu*}
