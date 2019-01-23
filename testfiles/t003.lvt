@@ -8,7 +8,7 @@
 \START
 \begin{tabu*}to\linewidth{|XX|}
 % if }{ in the short verb then already not working in tabu 2.09
-A short verb: \verb|$&\~{}|&\\
+A short verb: \verb|$&\~{}#|&\\
 \begin{Verbatim}[commandchars={\\\{\}}]
 And \textit{this} is a \textbf{\textrm{complete}}
 Verbatim environment $&~\textbraceleft\textbraceright 
@@ -17,7 +17,7 @@ Verbatim environment $&~\textbraceleft\textbraceright
 \normalfont\yyyyyy\begin{yyyyyy}hello\end{yyyyyy}hello\endyyyyyy
 \def\foo{foo}\meaning\foo
 \meaning\foo (ok as each line is\
-scoped by fancyvrb)
+scoped by fancyvrb) #
 \begin{Large}AA{\footnotesize{}BB}CC\end{Large}
 \begin{Large}AA\begin{footnotesize}BB\end{footnotesize}CC\end{Large}
 \end{Verbatim}
@@ -30,7 +30,7 @@ Verbatim environment $&~\textbraceleft\textbraceright
 \normalfont\yyyyyy\begin{yyyyyy}hello\end{yyyyyy}hello\endyyyyyy
 \def\foo{foo}\meaning\foo
 \meaning\foo (ok as each line is\
-scoped by fancyvrb)
+scoped by fancyvrb) #
 \begin{Large}AA{\footnotesize{}BB}CC\end{Large}
 \begin{Large}AA\begin{footnotesize}BB\end{footnotesize}CC\end{Large}
 \end{Verbatim}
