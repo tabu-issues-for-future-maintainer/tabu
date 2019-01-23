@@ -1329,29 +1329,32 @@
     |edef|tabu@stack{|expandafter|tabu@pushbegins@forscan
                      |tabu@collectbody@forscan@partial\begin|relax|expandafter|@gobble|tabu@stack}%
     |ifx |tabu@stack|@empty
-        |expandafter|@firstoftwo
+        |expandafter|tabu@collectbody@forscan@end
     |else
-        |expandafter|@secondoftwo
+        |expandafter|tabu@collectbody@forscan@continue
     |fi
-    {|expandafter|tabu@collectbody@forscan@end|expandafter{|tabu@collectbody@forscan@partial}{#1}}%
-    {|expandafter|tabu@collectbody@forscan@continue|expandafter{|tabu@collectbody@forscan@partial}{#1}}%
+    {#1}%
 }% \tabu@collectbody@forscan@b
-|def|tabu@collectbody@forscan@end #1#2{%
-    |toks@|expandafter{|expandafter|tabu@thebody|expandafter{|the|toks@ #1}%
-            |def|tabu@end@envir{|end{#2}}%
-            |iftabu@long |def|tabu@endenvir {|end{#2}|tabu@gobbleX}%
+|def|tabu@collectbody@forscan@end #1{%
+    |edef|tabu@@temp{|tabu@thebody{|the|toks@
+                                   |unexpanded|expandafter{|tabu@collectbody@forscan@partial}}%
+                    }%
+    |toks@|expandafter{|tabu@@temp
+            |def|tabu@end@envir{|end{#1}}%
+            |iftabu@long |def|tabu@endenvir {|end{#1}|tabu@gobbleX}%
             |else        |def|tabu@endenvir {|let|endarray |@empty
-                                             |end{#2}|tabu@gobbleX}%
+                                             |end{#1}|tabu@gobbleX}%
             |fi}%
     |let|tabu@collectbody@forscan|tabu@endofcollect
     |tabu@collectbody@forscan@next
 }% \tabu@collectbody@forscan@end
-|def|tabu@collectbody@forscan@continue #1#2{%
-    |def|tabu@temp{#2}%
-    |ifx |tabu@temp|@empty |toks@|expandafter{|the|toks@ #1\end}%
-    |else |ifx|tabu@temp|tabu@@spxiii |toks@|expandafter{|the|toks@ #1\end#2}%
-    |else |ifx|tabu@temp|tabu@X |toks@|expandafter{|the|toks@ #1\end#2}%
-    |else |toks@|expandafter{|the|toks@ #1\end{#2}}%
+|def|tabu@collectbody@forscan@continue #1{%
+    |edef|tabu@@temp{|the|toks@|unexpanded|expandafter{|tabu@collectbody@forscan@partial\end}}%
+    |def|tabu@temp{#1}%
+    |ifx |tabu@temp|@empty |toks@|expandafter{|tabu@@temp}%
+    |else |ifx|tabu@temp|tabu@@spxiii |toks@|expandafter{|tabu@@temp#1}%
+    |else |ifx|tabu@temp|tabu@X |toks@|expandafter{|tabu@@temp#1}%
+    |else |toks@|expandafter{|tabu@@temp{#1}}%
     |fi|fi|fi
     |tabu@collectbody@forscan@next{}%
 }% \tabu@collectbody@forscan@continue
