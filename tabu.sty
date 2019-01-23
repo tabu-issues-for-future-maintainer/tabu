@@ -1348,7 +1348,7 @@
 }% \tabu@collectbody@forscan@end
 |def|tabu@collectbody@forscan@continue #1#2{%
     |def|tabu@temp{#2}%
-    |ifx |tabu@temp|@empty |toks@|expandafter{|the|toks@ #1\end }%
+    |ifx |tabu@temp|@empty |toks@|expandafter{|the|toks@ #1\end}%
     |else |ifx|tabu@temp|tabu@@spxiii |toks@|expandafter{|the|toks@ #1\end#2}%
     |else |ifx|tabu@temp|tabu@X |toks@|expandafter{|the|toks@ #1\end#2}%
     |else |toks@|expandafter{|the|toks@ #1\end{#2}}%
