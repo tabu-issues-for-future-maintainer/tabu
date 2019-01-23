@@ -114,6 +114,10 @@
 \def\tabu@everyrowfalse{\global\let\iftabu@everyrow \iffalse}
 \newif \iftabu@long
 \newif \iftabuscantokens
+%% TABU-FIXED (issue #3)
+%% REMOVED \tabu@verbatim
+%% \def\tabu@rescan {\tabu@verbatim \scantokens  }
+\let\tabu@rescan \scantokens
 %% Utilities (for internal usage) -----------------------------------
 \def\tabu@gobblespace #1  {#1}
 \def\tabu@gobbletoken #1#2{#1}
@@ -958,7 +962,7 @@
     \NC@list{\NC@do \tabu@rewritemulticolumn}%
     \expandafter\@gobbletwo % gobbles \multispan{#1}
          \tabu@multicolumnORI{#1}{\tabu@rewritemulticolumn #2}%
-                {\iftabuscantokens \scantokens \else \expandafter\@firstofone \fi
+                {\iftabuscantokens \tabu@rescan \else \expandafter\@firstofone \fi
                 {#3}}%
 }% \tabu@multic@lumn
 %% The X column(s): rewriting process -----------------------------
@@ -1249,6 +1253,8 @@
     \ifnum \count@>\thr@@ \let\@halignto \@empty  \tabucolX@init
                           \def\tabu@lasttry{\m@ne\p@}\fi
     \begingroup \iffalse{\fi \ifnum0=`}\fi
+%% TABU-FIXED (issue #3)
+%% tabu* now collects body with a catcode 12 backslash
         \toks@{}\def\tabu@stack{b}\iftabuscantokens
                                     \endlinechar=10 \catcode`\\=12 \obeyspaces
                                     \expandafter\@firstoftwo
@@ -1278,6 +1284,8 @@
     \fi
 }% \tabu@Xinit
 %% Collecting the environment body ----------------------------------
+%% TABU-FIXED (issue #3)
+%% this macro now only for non-scantokens type of body collecting
 \long\def\tabu@collectbody #1#2\end #3{%
     \edef\tabu@stack{\tabu@pushbegins #2\begin\end\expandafter\@gobble\tabu@stack}%
     \ifx \tabu@stack\@empty
@@ -1298,6 +1306,8 @@
 \def\tabu@endofcollect #1{\ifnum0=`{}\fi
                           \expandafter\endgroup \the\toks@  #1%
 }% \tabu@endofcollect
+%% TABU-FIXED (issue #3)
+%% collects body with a catcode 12 backslash for later scantokenization
 \catcode`\| \z@
 \catcode`\\ 12
 |long|def|tabu@collectbody@forscan #1#2#3\end{%
@@ -1387,7 +1397,7 @@
 \def\tabu@shorttrial {\setbox\tabu@box \hbox\bgroup \tabu@seteverycr
     \ifx \tabu@savecounters\relax \else
                 \let\tabu@savecounters \relax \tabu@clckpt \fi
-    $\iftabuscantokens \scantokens \else \expandafter\@secondoftwo \fi
+    $\iftabuscantokens \tabu@rescan \else \expandafter\@secondoftwo \fi
        \expandafter{\expandafter \tabuthepreamble
                          \the\tabu@thebody
                          \csname tabu@adl@endtrial\endcsname
@@ -1396,7 +1406,7 @@
 \def\tabu@longtrial {\setbox\tabu@box \hbox\bgroup \tabu@seteverycr
     \ifx \tabu@savecounters\relax \else
                 \let\tabu@savecounters \relax \tabu@clckpt \fi
-    \iftabuscantokens \scantokens \else \expandafter\@secondoftwo \fi
+    \iftabuscantokens \tabu@rescan \else \expandafter\@secondoftwo \fi
        \expandafter{\expandafter \tabuthepreamble
                          \the\tabu@thebody
                          \tabuendlongtrial}\egroup      % got \tabu@box
@@ -1419,7 +1429,7 @@
     \else               \expandafter\@secondoftwo
     \fi
         {\expandafter \tabu@closetrialsgroup \expandafter
-         \scantokens \expandafter{%
+         \tabu@rescan \expandafter{%
                     \expandafter\tabuthepreamble
                         \the\expandafter\tabu@thebody
                                     \iftabu@long \else \endarray \fi}}
@@ -2090,6 +2100,9 @@
     \fi\fi
 }% \tabu@printdecimal
 %% Verbatim inside X columns ----------------------------------------
+%% TABU-FIXED (issue #3)
+%% REMOVED \tabu@verbatim, \tabu@verb, \tabu@FV@DefineCheckEnd, ...
+%% REMOVED \tabu@fancyvrb, \tabu@FV@CheckEnd, etc...
 \def\tabu@FV@ListProcessLine #1{%
   \hbox {%to \hsize{%
     \kern\leftmargin
@@ -2562,6 +2575,10 @@
             ifHy@hyperfootnotes\else iffalse\fi\endcsname
         \let\tabu@footnotetext \tabu@Hy@ftntext
         \let\tabu@xfootnote    \tabu@Hy@xfootnote \fi
+%% TABU-FIXED (issue #3)
+%% REMOVED \tabu@fancyvrb
+%%  \ifdefined\FV@DefineCheckEnd% <fancyvrb>
+%%          \tabu@fancyvrb  \fi
     \ifdefined\color            % <color / xcolor>
         \let\tabu@color \color
         \def\tabu@leavevmodecolor ##1{%
