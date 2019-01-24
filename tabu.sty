@@ -1291,7 +1291,12 @@
     \ifx \tabu@stack\@empty
         \toks@\expandafter{\expandafter\tabu@thebody\expandafter{\the\toks@ #2}%
                 \def\tabu@end@envir{\end{#3}}%
-                \def\tabu@endenvir {\end{#3}}}%
+                \iftabuscantokens
+                    \iftabu@long \def\tabu@endenvir {\end{#3}\tabu@gobbleX}%
+                    \else        \def\tabu@endenvir {\let\endarray \@empty
+                                                     \end{#3}\tabu@gobbleX}%
+                    \fi
+                \else           \def\tabu@endenvir  {\end{#3}}\fi}%
         \let\tabu@collectbody \tabu@endofcollect
     \else\def\tabu@temp{#3}%
         \ifx \tabu@temp\@empty \toks@\expandafter{\the\toks@ #2\end }%
