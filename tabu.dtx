@@ -6099,6 +6099,7 @@ morekeywords=[7]{yellow},
         \ifdim \tabu@temp\p@>\z@ \ifdim \tabu@temp\tabucolX<\tabu@target
                                         \tabu@target=\tabu@temp\tabucolX \fi\fi
         \setbox\tabu@box  \hbox \bgroup
+            \color@begingroup%
             \begin{varwidth}\tabu@target
                 \let\FV@ListProcessLine \tabu@FV@ListProcessLine  % \hbox to natural width...
                 \narrowragged \arraybackslash \parfillskip \@flushglue

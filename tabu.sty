@@ -1,6 +1,6 @@
 %%TABU-FIXED
 %%
-%% tabu : 2019-01-11 - tabu : Flexible LaTeX tabulars
+%% tabu : 2019-02-24 - tabu : Flexible LaTeX tabulars
 %% 
 %% **********************************************************************************************
 %% \begin{tabu}               { preamble } => default target: \linewidth or \linegoal
@@ -51,13 +51,13 @@
 %% tabu : Flexible LaTeX tabulars
 %% lppl copyright 2010-2011 by FC <florent.chervet@free.fr>
 %%
-%% Updated 2019-01-11
+%% Updated 2019-02-24
 %% Copyright 2019 tabu-fixed github group (LaTeX3 Project members)
 %% Please report any issues at https://github.com/tabu-fixed/tabu
 %% 
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{tabu}[2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)]
+\ProvidesPackage{tabu}[2019/02/24 v2.10 - flexible LaTeX tabulars (FC+tabu-fixed)]
 \RequirePackage{array}[2008/09/09]
 \RequirePackage{varwidth}[2009/03/30]
 \AtEndOfPackage{\tabu@AtEnd \let\tabu@AtEnd \@undefined}
@@ -1663,6 +1663,7 @@
         \ifdim \tabu@temp\p@>\z@ \ifdim \tabu@temp\tabucolX<\tabu@target
                                         \tabu@target=\tabu@temp\tabucolX \fi\fi
         \setbox\tabu@box  \hbox \bgroup
+            \color@begingroup%
             \begin{varwidth}\tabu@target
                 \let\FV@ListProcessLine \tabu@FV@ListProcessLine  % \hbox to natural width...
                 \narrowragged \arraybackslash \parfillskip \@flushglue
