@@ -1,0 +1,22 @@
+\documentclass{article}
+
+\input{regression-test}
+
+\usepackage{xcolor}
+\usepackage{longtable,tabu}
+
+
+
+\begin{document}
+
+\START
+
+    \begin{longtabu}{X}
+        \begin{tabu} spread 0mm {X}
+            X \\
+        \end{tabu}
+    \end{longtabu}
+
+
+
+\end{document}

@@ -1,12 +1,13 @@
 \documentclass{article}
 
-\usepackage{array}[=2016-10-06]
+%\usepackage{array}[=2016-10-06]
 \usepackage{tabu}
 \usepackage{colortbl}
-%\input{regression-test}
+\input{regression-test}
+
 \begin{document}
 
-%\START
+\START
 \begin{tabu} {l|l}
 \rowfont[c]{\bfseries}
 1 & 2

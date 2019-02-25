@@ -1,0 +1,15 @@
+\documentclass{article}
+
+\input{regression-test}
+
+\usepackage{xcolor}
+\usepackage{tabu}
+
+\begin{document}
+
+\START
+
+    \begin{tabu}{X[-1]}
+    hello
+    \end{tabu}
+\end{document}
