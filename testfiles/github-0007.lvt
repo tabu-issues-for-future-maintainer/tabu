@@ -1,0 +1,25 @@
+\documentclass{article}
+
+\input{regression-test}
+
+\usepackage{color}
+\usepackage{tabu}
+
+\begin{document}
+
+\START
+
+\begin{itemize}
+\item Foo Bar
+  
+  \begin{tabu} to \linewidth {m{2cm}X}
+    pippo &
+    \begin{tabular}{c}
+      test test
+    \end{tabular}\\
+  \end{tabu}
+
+
+\end{itemize}
+
+\end{document}

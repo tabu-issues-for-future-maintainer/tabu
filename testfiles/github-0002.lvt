@@ -1,0 +1,20 @@
+\documentclass[a4paper,12pt]{report}
+
+\input{regression-test}
+
+\usepackage{tabu}
+\usepackage{amsmath}
+\usepackage{xcolor}  
+\newcolumntype{L}{>{\begin{varwidth}{0.91\linewidth}}l<{\end{varwidth}}}
+
+\begin{document}    
+
+\START
+
+\begin{tabu}{Lcc}
+$\begin{pmatrix}
+1 \\2\\3    
+\end{pmatrix}$& 2& 3\\
+\end{tabu}
+
+\end{document}

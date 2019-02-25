@@ -1,0 +1,20 @@
+
+\documentclass{article}
+
+\input{regression-test}
+
+\usepackage{fancyvrb}
+\usepackage{tabu}
+\begin{document}
+
+\START
+
+\begin{tabu*}to\linewidth{|XX|}
+A&
+\begin{Verbatim}[commandchars=\\\{\}]
+And this is a complete
+Verbatim environment
+\end{Verbatim}
+\\
+\end{tabu*}
+\end{document}

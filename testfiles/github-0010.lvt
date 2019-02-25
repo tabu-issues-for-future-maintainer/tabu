@@ -1,0 +1,28 @@
+\documentclass{article}
+
+\input{regression-test}
+
+\usepackage{longtable}
+\usepackage{tabu}
+\usepackage{color}
+
+\begin{document}
+
+\START
+
+% OK
+\begin{longtabu} to \linewidth {llX}
+    a & b & c\\
+\end{longtabu}
+
+% OK
+\begin{longtabu} {|X[1]|X[1]|X[1]|}
+    a & b & c\\
+\end{longtabu}
+
+% Fails
+\begin{longtabu} {|X[-1]|X[-1]|X[-1]|}
+    a & b & c\\
+\end{longtabu}
+
+\end{document}
