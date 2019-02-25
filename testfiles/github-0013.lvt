@@ -1,0 +1,49 @@
+\documentclass{book}
+
+\input{regression-test}
+
+\usepackage{tabu}
+\usepackage[table]{xcolor}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\START
+
+This is a test of tabu and cellcolor.
+\bigskip
+
+\begin{tabu}[t]{| l | l | l |}
+\hline
+\rowcolor{cyan}1& 2& 3\
+\hline
+\cellcolor{yellow}4 & 5& 6\
+\hline
+7 & \cellcolor{blue}8 & \cellcolor{yellow}9\
+\hline
+10 & \cellcolor{blue}11 & 12 \
+13 & \cellcolor{cyan}{14} & 15 \
+16 & 17 & \cellcolor{green}18 \
+\hline
+\end{tabu}
+\bigskip
+
+This is a test using tabular.
+\bigskip
+
+\begin{tabular}[t]{| l | l | l |}
+\hline
+\rowcolor{cyan}1& 2& 3\
+\hline
+\cellcolor{yellow}4 & 5& 6\
+\hline
+7 & \cellcolor{blue}8 & \cellcolor{yellow}9\
+10 & \cellcolor{blue}11 & 12 \
+13 & \cellcolor{cyan}{14} & 15 \
+16 & 17 & \cellcolor{green}18 \
+\hline
+\end{tabular}
+\end{document}

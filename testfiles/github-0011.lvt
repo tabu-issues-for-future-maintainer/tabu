@@ -1,0 +1,21 @@
+\documentclass{article}
+\listfiles
+
+\input{regression-test}
+
+\usepackage{colortbl}
+\usepackage{longtable}
+\usepackage{tabu}
+\usepackage{xcolor}
+
+\definecolor{yyy}{RGB}{230,15,110}
+
+\begin{document}
+
+\START
+
+\begin{longtabu}{>{\raggedleft}p{2.5cm} >{\columncolor{yyy}[0.5pt]}X} %
+\everyrow{\tabucline[5pt white]-} %
+        Test & Test2\\
+\end{longtabu} %
+\end{document}
