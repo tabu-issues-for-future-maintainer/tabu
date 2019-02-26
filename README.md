@@ -3,14 +3,14 @@
 ## Note about the status of this code
 
 The tabu package contains a lot of very nice ideas that are worth
-having. Unfortunately, however, it hasn't been actively maintained by
-its original author and that means that a number of bugs have been
-discovered in the last years that are all unfixed.
+having. Unfortunately, however, it hasn't been actively maintained
+by its original author since 2011 and that means that a number of bugs
+have been discovered in the last years that are all unfixed.
 
-This source code repository does **not mean** that members of the
-LaTeX Project Team are now actively maintaining this package. It is, and
-will stay **unmaintained** unless a new maintainer steps forward. All
-the team tries to do with with repository is to provide some emergency
+This source code repository does *not mean* that members of the
+LaTeX Project Team are now actively maintaining this package. The package is, and
+will stay *unmaintained* unless a new maintainer steps forward. All
+the team tries to do with this repository is to provide some emergency
 fixes (which was/is difficult enough) that are necessary because
 `tabu` stopped working altogether after the latest corrections made in
 the LaTeX kernel.
@@ -31,10 +31,10 @@ sucessfully mend the code---time that the team doesn't really have. It is
 therefore very important to consider carefully if you want to use that
 package in any important document (say, a thesis), because half way
 through you may find that it stops working (like tabu recently did)
-and there may not be a fix possible in the time frame of your
-deadlines.
+and there may not
+be a fix possible within your timeframe.
 
-We therefore **do not recommend** its usage at this point in
+We therefore *do not recommend* its usage at this point in
 time. However, we hope that somebody will step forward and start
 actively supporting the code base.
 
