@@ -20,17 +20,17 @@ the LaTeX kernel.
 We welcome and appreciate bug reports through the issue tracker because we hope
 that at some point in the future there will be a new active maintainer
 for this package. However, we aren't necessarily going to act on any
-issues, especially not on issue that are not caused by any recent changes
+issues, especially not on issues that are not caused by recent changes
 to the LaTeX kernel code.
 
 In summary: while this package is nice, there is no guarantee that it
-will no break again. If that happen it could be that no easy fix is
-possible. Due to the complexity of the code, it takes time to determine
+will not break again. If that happens it could be that no easy fix is
+possible. Due to the complexity of the code it takes time to determine
 the root cause in case of problems and often even more time to
-sucessfully mend it---time that the team doesn't really have. It is
+sucessfully mend the code---time that the team doesn't really have. It is
 therefore very important to consider carefully if you want to use that
-package in any important document (say, a thesis) because half way
-through you may find that it stops working (like tabu did recently)
+package in any important document (say, a thesis), because half way
+through you may find that it stops working (like tabu recently did)
 and there may not be a fix possible in the time frame of your
 deadlines.
 
