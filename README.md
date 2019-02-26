@@ -1,4 +1,45 @@
-# tabu
+# Tabu
+
+## Note about the status of this code
+
+The tabu package contains a lot of very nice ideas that are worth
+having. Unfortunately, however, it hasn't been actively maintained by
+its original author and that means that a number of bugs have been
+discovered in the last years that are all unfixed.
+
+This source code repository does **not mean** that members of the
+LaTeX Project Team are now actively maintaining this package. It is, and
+will stay **unmaintained** unless a new maintainer steps forward. All
+the team tries to do with with repository is to provide some emergency
+fixes (which was/is difficult enough) that are necessary because
+`tabu` stopped working altogether after the latest corrections made in
+the LaTeX kernel.
+
+### Consequences
+
+We welcome and appreciate bug reports through the issue tracker because we hope
+that at some point in the future there will be a new active maintainer
+for this package. However, we aren't necessarily going to act on any
+issues, especially not on issue that are not caused by any recent changes
+to the LaTeX kernel code.
+
+In summary: while this package is nice, there is no guarantee that it
+will no break again. If that happen it could be that no easy fix is
+possible. Due to the complexity of the code, it takes time to determine
+the root cause in case of problems and often even more time to
+sucessfully mend it---time that the team doesn't really have. It is
+therefore very important to consider carefully if you want to use that
+package in any important document (say, a thesis) because half way
+through you may find that it stops working (like tabu did recently)
+and there may not be a fix possible in the time frame of your
+deadlines.
+
+We therefore **do not recommend** its usage at this point in
+time. However, we hope that somebody will step forward and start
+actively supporting the code base.
+
+ --- The LaTeX3 Project Team
+
 
 
 ## Original Tabu README
@@ -86,3 +127,4 @@ A more complete fix would be to adapt tabu code to the new array.)
 ### Not yet handled
 
 https://tex.stackexchange.com/questions/201510/what-is-the-difference-between-and-linebreak-in-cfoot
+
