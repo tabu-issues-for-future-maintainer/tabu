@@ -8,30 +8,38 @@ by its original author since 2011 and that means that a number of bugs
 have been discovered in the last years that are all unfixed.
 
 This source code repository does *not mean* that members of the
-LaTeX Project Team are now actively maintaining this package. The package is, and
-will stay *unmaintained* unless a new maintainer steps forward. All
-the team tries to do with this repository is to provide some emergency
-fixes (which was/is difficult enough) that are necessary because
-`tabu` stopped working altogether after the latest corrections made in
-the LaTeX kernel.
+LaTeX Project Team are now actively maintaining this package.
+
+**The package is, and will stay *unmaintained* unless a new maintainer steps forward.**
+
+All the team tried to do with this repository is to provide some
+emergency fixes (which was/is difficult enough) that were necessary
+because `tabu` stopped working altogether after the latest corrections
+made in the LaTeX kernel.  However, as it turned out it is impossible
+for us to fix all the problems with this package and we are unlikely to
+try further.
+
 
 ### Consequences
 
-We welcome and appreciate bug reports through the issue tracker because we hope
-that at some point in the future there will be a new active maintainer
-for this package. However, we aren't necessarily going to act on any
-issues, especially not on issues that are not caused by recent changes
-to the LaTeX kernel code.
+We welcome and appreciate bug reports through the issue tracker,
+because we hope that at some point in the future there will be a new
+active maintainer for this package. However, we aren't necessarily
+going to act on any issue, especially not on issues that are not
+caused by recent changes to the LaTeX kernel code (but even those have
+their reason in the past as the package patched a lot of LaTeX
+internals that should have never been done or only if there is an
+active maintainer lookin after them).
 
 In summary: while this package is nice, there is no guarantee that it
-will not break again. If that happens it could be that no easy fix is
-possible. Due to the complexity of the code it takes time to determine
-the root cause in case of problems and often even more time to
-sucessfully mend the code---time that the team doesn't really have. It is
-therefore very important to consider carefully if you want to use that
-package in any important document (say, a thesis), because half way
-through you may find that it stops working (like tabu recently did)
-and there may not
+will not break again in fact it is still broken in some parts. If that
+happens it could be that no easy fix is possible. Due to the
+complexity of the code it takes time to determine the root cause in
+case of problems and often even more time to sucessfully mend the
+code---time that the team doesn't really have. It is therefore very
+important to consider carefully if you want to use that package in any
+important document (say, a thesis), because half way through you may
+find that it stops working (like tabu recently did) and there may not
 be a fix possible within your timeframe.
 
 We therefore *do not recommend* its usage at this point in
@@ -95,7 +103,7 @@ been updated for several years, finally becoming unusable in 2019 as
 updates to other packages mean some of its patched code did not work
 as intended.
 
-The package is not being actively maintained however any major required
+The package is not being actively maintained, however any major required
 fixes may be reported to the https://github.com/tabu-fixed/tabu repository
 and volunteers there (currently members of the LaTeX3 Team) will attempt
 to update the package with any fixes required.
@@ -124,7 +132,7 @@ https://tex.stackexchange.com/questions/430973/tabu-m-column-vertical-alignment-
 A more complete fix would be to adapt tabu code to the new array.)
 
 
-### Not yet handled
+### Not handled
 
 https://tex.stackexchange.com/questions/201510/what-is-the-difference-between-and-linebreak-in-cfoot
 
