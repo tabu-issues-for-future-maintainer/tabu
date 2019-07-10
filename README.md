@@ -19,6 +19,13 @@ made in the LaTeX kernel.  However, as it turned out it is impossible
 for us to fix all the problems with this package and we are unlikely to
 try further.
 
+Note that the GitHub organisation name has been changed to clarify the intent
+it is now  
+https://github.com/tabu-issues-for-future-maintainer/tabu  
+Please update any links that still use the old name  
+`https://github.com/tabu-fixed/tabu`  
+although GitHub should redirect any existing links.
+
 
 ### Consequences
 
